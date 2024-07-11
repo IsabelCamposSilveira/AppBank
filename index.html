@@ -1,0 +1,97 @@
+<!-- A pagina index e account estão no mesmo arquivo para não perdemos os dados salvos no JS -->
+<!-- index.html utliza index.js para chamar funções -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="./Style/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">BankApp</a>
+        <div class="navbar-links">
+            <a id="navbar-login">Entrar/Sair</a>
+        </div>
+    </nav>
+
+    <section id="indexScreen" class="mostrar">
+
+        <div class="container">
+            <div class="form-container">
+                <div class="signup">
+                    <h2>Cadastro de Usuário</h2>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+    
+                    <button id="ButonCreateUser">Cadastrar</button>
+    
+                </div>
+                <hr>
+    
+                <div class="login">
+                    <h2>Entrar</h2>
+    
+                    <label for="emailLogin">Email:</label>
+                    <input type="email" id="emailLogin" name="emailLogin" required>
+                    <button id="ButonLoginUser">Entrar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="accountScreen" class="ocultar">
+        <h2>Bem vindo: <span id="userName"></span></h2>
+        <p>Saldo atual: <span id="saldoAtual"></span></p>
+        <span class="ocultar" id="emailUserLogado"></span>
+        <div class="container">
+            
+            <div class="actions">
+                <div class="action">
+                    <h2>Criar Depósito</h2>
+                    <label for="deposito-valor">Valor do Depósito:</label>
+                    <input type="number" id="deposito-valor" name="deposito-valor" required>
+                    <button id="ButtonCreateDeposito">Depositar</button>
+    
+    
+                    <h3>Depósitos Realizados</h3>
+                    <div id="data-depositos"></div>
+                </div>
+    
+                <div class="action">
+                    <h2>Criar Empréstimo</h2>
+                    <label for="loan-valor">Valor do Empréstimo:</label>
+                    <input type="number" id="loan-valor" name="loan-valor" required>
+
+                    <label for="loan-parcelas">Quantidade de Parcelas:</label>
+                    <input type="number" id="loan-parcelas" name="loan-parcelas" required>
+                    <button  id="ButtonCreateEmprestimo">Solicitar Empréstimo</button>
+
+                    <h3>Empréstimos</h3>
+                    <ul id="data-emprestimos"></ul>
+                </div>
+    
+                <div class="action">
+                    <h2>Criar Transferência</h2>
+                    <label for="transfer-amount">Valor da Transferência:</label>
+                    <input type="number" id="transfer-valor" name="transfer-amount" required>
+
+                    <label for="transfer-email">Email do Destinatário:</label>
+                    <input type="email" id="transfer-email" name="transfer-email" required>
+
+                    <button id="ButtonCreateTransferencia">Transferir</button>
+                    <h3>Transferências</h3>
+                    <ul id="data-transferencias"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <script type="module" src="./Index.js"></script>
+</body>
+</html>
