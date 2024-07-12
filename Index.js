@@ -33,6 +33,9 @@ ButonLoginUser.onclick = function loginUser() {
         document.getElementById('userName').textContent = userExist.nome
         document.getElementById('saldoAtual').textContent = userExist.account.saldo
         document.getElementById('emailUserLogado').textContent = userExist.email
+        viewLoans(userExist.email)
+        viewDeposits()
+        viewTransfers()
     } else {
         viewUsers()
         alert(`Usuário com e-mail ${emailLogin} não encontrado`)
@@ -75,7 +78,7 @@ ButtonCreateTransferencia.onclick = function createTransfer() {
     const receptorEmail = document.getElementById('transfer-email').value;
     const valor = document.getElementById('transfer-valor').value;
     App.createTransfer(remetenteEmail, receptorEmail, parseInt(valor));
-    alert(`Tranferencia criada de ${remetenteEmail} para ${receptorEmail}, valor ${valor}.!`);
+    
 
     // Atualiza saldo e lista de depositos
     document.getElementById('saldoAtual').textContent = App.findUser(remetenteEmail).account.saldo
@@ -116,7 +119,7 @@ function viewTransfers() {
     const dataTransferencias = document.getElementById('data-transferencias');
     dataTransferencias.innerHTML = '';
     transfers.forEach(transfer => {
-        output.innerHTML += `<p>From: ${transfer.remetenteEmail}, To: ${transfer.receptorEmail}, Value: ${transfer.valor}</p>`;
+        dataTransferencias.innerHTML += `<p>De: ${transfer.remetenteEmail}, Para: ${transfer.receptorEmail}, Valor: ${transfer.valor}</p>`;
     });
 
 }
