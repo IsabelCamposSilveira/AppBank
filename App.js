@@ -3,7 +3,7 @@ import Deposito from './Entities/Deposito.js';
 import Loan from './Entities/Loan.js';
 import Transfer from './Entities/Transfer.js';
 
-// Class
+
 export default class App {
     static #users = [];
     
@@ -32,7 +32,7 @@ export default class App {
             console.log ("Conta com o email especificado não existente.")
         }
     }
-
+    
     static getDeposits(email) {
         const user = this.findUser(email)
         const deposits = [];
@@ -52,18 +52,18 @@ export default class App {
             const transfer = new Transfer(remetenteEmail, receptorEmail, valor)
             userRecptor.account.addTransfer(transfer);
             userRementente.account.addTransfer(transfer);
+            alert(`Tranferencia criada de ${remetenteEmail} para ${receptorEmail}, valor ${valor}.!`);
         } else {
-            console.log("Usuário não existente")
+            alert("Usuário não existente")
         }
     }
 
-    static getTransfers() {
+    static getTransfers(email) {
+        const user = this.findUser(email)
         const transfers = [];
-        this.#users.forEach(user => {
-            user.account.transfers.forEach(transfer => {
-                transfers.push({ remetenteEmail: transfer.remetenteEmail, receptorEmail: transfer.receptorEmail, valor: transfer.valor });
+        user.account.transferencias.forEach(transfer => {
+                transfers.push({ remetenteEmail: transfer.remetente, receptorEmail: transfer.receptor, valor: transfer.valor });
             });
-        });
         return transfers;
     }
 
@@ -80,6 +80,7 @@ export default class App {
     static getLoans(email) {
         const loans = [];
         const user = this.findUser(email)
+        console.log(email)
         user.account.loans.forEach(loan => {
                 loans.push({ data: loan.data, valor: loan.valorEmprestimo, parcelas: loan.parcelas });
             });
