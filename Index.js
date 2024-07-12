@@ -37,7 +37,6 @@ ButonLoginUser.onclick = function loginUser() {
         viewDeposits()
         viewTransfers()
     } else {
-        viewUsers()
         alert(`Usuário com e-mail ${emailLogin} não encontrado`)
     }
 }
