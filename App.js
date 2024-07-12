@@ -3,7 +3,7 @@ import Deposito from './Entities/Deposito.js';
 import Loan from './Entities/Loan.js';
 import Transfer from './Entities/Transfer.js';
 
-
+// Class
 export default class App {
     static #users = [];
     
